@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.dicoding.cocktailapps.ui.theme.CocktailAppsTheme
 
 @Composable
-fun DetailScreen(
+fun AboutScreen(
     modifier: Modifier = Modifier,
 ) {
 
@@ -14,8 +14,8 @@ fun DetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun DetailScreenPreview() {
+fun AboutScreenPreview() {
     CocktailAppsTheme {
-        DetailScreen()
+        AboutScreen()
     }
 }

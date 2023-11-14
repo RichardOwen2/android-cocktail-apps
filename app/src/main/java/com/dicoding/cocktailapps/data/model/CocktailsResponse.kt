@@ -5,12 +5,12 @@ data class CocktailsResponse(
 )
 
 data class DrinksItem(
-	val idDrink: String? = null,
-	val strDrink: String? = null,
-	val strCategory: String? = null,
-	val strAlcoholic: String? = null,
+	val idDrink: String,
+	val strDrink: String,
+	val strCategory: String,
+	val strAlcoholic: String,
 	val strInstructions: String? = null,
-	val strDrinkThumb: String? = null,
+	val strDrinkThumb: String,
 	val strIngredient1: String? = null,
 	val strIngredient2: String? = null,
 	val strIngredient3: String? = null,
@@ -41,5 +41,15 @@ data class DrinksItem(
 	val strMeasure13: String? = null,
 	val strMeasure14: String? = null,
 	val strMeasure15: String? = null,
-)
+) {
+	fun toCocktailEntity(): CocktailEntity {
+		return CocktailEntity(
+			idDrink = this.idDrink,
+			strDrink = this.strDrink,
+			strDrinkThumb = this.strDrinkThumb,
+			strCategory = this.strCategory,
+			strAlcoholic = this.strAlcoholic,
+		)
+	}
+}
 

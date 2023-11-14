@@ -1,11 +1,15 @@
 package com.dicoding.cocktailapps.data.di
 
+import android.content.Context
 import com.dicoding.cocktailapps.data.api.ApiConfig
+import com.dicoding.cocktailapps.data.local.FavoriteDatabase
 import com.dicoding.cocktailapps.data.repository.CocktailRepository
 
 object Injection {
-    fun provideRepository(): CocktailRepository {
+    fun provideRepository(context: Context): CocktailRepository {
         val apiService = ApiConfig.getApiService()
-        return CocktailRepository.getInstance(apiService)
+        val favoriteDatabase = FavoriteDatabase.getInstance(context)
+        val favoriteDao = favoriteDatabase.favoriteDao()
+        return CocktailRepository.getInstance(apiService, favoriteDao)
     }
 }

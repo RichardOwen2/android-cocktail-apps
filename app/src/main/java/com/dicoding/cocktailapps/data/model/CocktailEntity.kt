@@ -11,8 +11,14 @@ class CocktailEntity (
     val idDrink: String,
 
     @field:ColumnInfo(name = "strDrink")
-    val strDrink: String? = null,
+    val strDrink: String,
 
     @field:ColumnInfo(name = "strDrinkThumb")
-    val strDrinkThumb: String? = null,
+    val strDrinkThumb: String,
+
+    @field:ColumnInfo(name = "strCategory")
+    val strCategory: String,
+
+    @field:ColumnInfo(name = "strAlcoholic")
+    val strAlcoholic: String,
 )
