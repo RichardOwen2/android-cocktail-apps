@@ -19,7 +19,7 @@ fun FavoriteScreen(
     viewModel: FavoriteViewModel = viewModel(
         factory = ViewModelFactory(Injection.provideRepository(context = LocalContext.current))
     ),
-    onNavigateToDetailScreen: (String) -> Unit = {},
+    onNavigateToDetailScreen: (String) -> Unit,
 ) {
     viewModel.favoriteCocktails.collectAsState(initial = UiState.Loading).value.let {
         when (it) {

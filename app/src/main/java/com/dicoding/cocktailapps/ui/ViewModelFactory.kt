@@ -3,6 +3,8 @@ package com.dicoding.cocktailapps.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.cocktailapps.data.repository.CocktailRepository
+import com.dicoding.cocktailapps.ui.screen.detail.DetailViewModel
+import com.dicoding.cocktailapps.ui.screen.favorite.FavoriteViewModel
 import com.dicoding.cocktailapps.ui.screen.home.HomeViewModel
 
 class ViewModelFactory(private val repository: CocktailRepository) :
@@ -12,12 +14,11 @@ class ViewModelFactory(private val repository: CocktailRepository) :
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
+            return FavoriteViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+            return DetailViewModel(repository) as T
         }
-//        } else if (modelClass.isAssignableFrom(DetailRewardViewModel::class.java)) {
-//            return DetailRewardViewModel(repository) as T
-//        } else if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
-//            return CartViewModel(repository) as T
-//        }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 }

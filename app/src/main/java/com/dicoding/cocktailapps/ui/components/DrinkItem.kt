@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,14 +29,19 @@ import com.dicoding.cocktailapps.data.model.DrinksItem
 fun DrinkItem(
     modifier: Modifier = Modifier,
     data: DrinksItem,
-    onNavigateToDetailScreen: (String) -> Unit = {},
+    onNavigateToDetailScreen: (String) -> Unit,
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         modifier = modifier
-            .size(width = 300.dp, height = 100.dp)
+            .fillMaxWidth()
+            .padding(
+                bottom = 8.dp,
+                start = 10.dp,
+                end = 10.dp,
+            )
             .clickable {
                 onNavigateToDetailScreen(data.idDrink)
             }
@@ -48,6 +56,7 @@ fun DrinkItem(
                 modifier = modifier
                     .padding(4.dp)
                     .size(100.dp)
+                    .clip(MaterialTheme.shapes.medium)
             )
             Column(
                 modifier = modifier
@@ -63,14 +72,15 @@ fun DrinkItem(
                 Text(
                     text = data.strCategory,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     modifier = modifier
                 )
                 Text(
                     text = data.strAlcoholic,
                     fontSize = 12.sp,
-                    fontWeight = FontWeight.Thin,
-                    modifier = modifier
+                    fontWeight = FontWeight.Light,
+                    modifier = modifier,
+                    fontStyle = FontStyle.Italic
                 )
             }
         }
@@ -88,7 +98,12 @@ fun DrinkItem(
             defaultElevation = 6.dp
         ),
         modifier = modifier
-            .size(width = 300.dp, height = 100.dp)
+            .fillMaxWidth()
+            .padding(
+                bottom = 8.dp,
+                start = 10.dp,
+                end = 10.dp,
+            )
             .clickable {
                 onNavigateToDetailScreen(data.idDrink)
             }
@@ -103,6 +118,7 @@ fun DrinkItem(
                 modifier = modifier
                     .padding(4.dp)
                     .size(100.dp)
+                    .clip(MaterialTheme.shapes.medium)
             )
             Column(
                 modifier = modifier
@@ -118,14 +134,15 @@ fun DrinkItem(
                 Text(
                     text = data.strCategory,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     modifier = modifier
                 )
                 Text(
                     text = data.strAlcoholic,
                     fontSize = 12.sp,
-                    fontWeight = FontWeight.Thin,
-                    modifier = modifier
+                    fontWeight = FontWeight.Light,
+                    modifier = modifier,
+                    fontStyle = FontStyle.Italic
                 )
             }
         }

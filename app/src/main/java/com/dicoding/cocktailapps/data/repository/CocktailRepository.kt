@@ -25,7 +25,11 @@ class CocktailRepository private constructor(
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    emit(Result.Success(body))
+                    if (!body.drinks.isNullOrEmpty()) {
+                        emit(Result.Success(body))
+                    } else {
+                        emit(Result.Error("Not Found"))
+                    }
                 } else {
                     emit(Result.Error("Something went wrong"))
                 }
@@ -61,7 +65,8 @@ class CocktailRepository private constructor(
 
     fun getFavoriteCocktails() = favoriteDao.getFavoriteCocktails()
 
-    suspend fun deleteFavoriteCocktail(cocktail: CocktailEntity) = favoriteDao.delete(cocktail.idDrink)
+    suspend fun deleteFavoriteCocktail(cocktail: CocktailEntity) =
+        favoriteDao.delete(cocktail.idDrink)
 
     suspend fun addFavoriteCocktail(cocktail: CocktailEntity) = favoriteDao.insert(cocktail)
 
