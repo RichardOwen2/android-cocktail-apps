@@ -101,25 +101,4 @@ fun HomeScreen(
             }
         }
     }
-
-
 }
-
-//@Composable
-//fun HomeContent(
-//    modifier: Modifier = Modifier,
-//    data: List<DrinksItem>,
-//    onNavigateToDetailScreen: (String) -> Unit = {},
-//) {
-//
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun HomeScreenPreview() {
-//    CocktailAppsTheme {
-//        HomeContent(
-//            data = getDummyCocktailResponse(),
-//        )
-//    }
-//}

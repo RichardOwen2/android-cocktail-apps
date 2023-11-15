@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CocktailApps</string>
+        <string name="developer_name">Richard Owen Hoan</string>
+    <string name="developer_email">richardowen2411@gmail.com</string>
+    <string name="developer_image">https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/small/avatar/dos:5c207e6aa98c47e3649227f5de6f3c9420230113171853.png</string>
 </resources>

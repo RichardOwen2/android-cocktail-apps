@@ -123,7 +123,7 @@ fun App(
                                     launchSingleTop = true
                                 }
                             },
-                            modifier = Modifier.padding(horizontal = 12.dp)
+                            modifier = Modifier.padding(horizontal = 12.dp),
                         )
                     }
                 }

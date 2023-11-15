@@ -1,12 +1,10 @@
 package com.dicoding.cocktailapps.ui.navigation
 
 sealed class Screen(val route: String) {
-    object Home : Screen("home")
-    object Detail : Screen("detail/{id}") {
+    data object Home : Screen("home")
+    data object Detail : Screen("detail/{id}") {
         fun createRoute(id: String) = "detail/$id"
     }
-    object Favorite : Screen("favorite") {
-        fun createRoute(id: String) = "favorite/$id"
-    }
-    object About : Screen("about")
+    data object Favorite : Screen("favorite")
+    data object About : Screen("about")
 }
