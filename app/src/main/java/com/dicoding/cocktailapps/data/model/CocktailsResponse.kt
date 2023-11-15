@@ -9,7 +9,7 @@ data class DrinksItem(
 	val strDrink: String,
 	val strCategory: String,
 	val strAlcoholic: String,
-	val strInstructions: String? = null,
+	val strInstructions: String,
 	val strDrinkThumb: String,
 	val strIngredient1: String? = null,
 	val strIngredient2: String? = null,

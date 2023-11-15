@@ -1,5 +1,7 @@
 package com.dicoding.cocktailapps.ui.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -15,6 +17,7 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,21 +52,31 @@ fun SearchBarComponent(
             .padding(16.dp)
             .fillMaxWidth()
     ) {
-        TextField(
-            value = query,
-            onValueChange = {
-                onQueryChange(it)
-            },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    onSearch(query)
-                }
-            ),
-        )
+        Box(
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.onBackground)
+                .clip(MaterialTheme.shapes.large)
+        ) {
+            TextField(
+                value = query,
+                onValueChange = {
+                    onQueryChange(it)
+                },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        onSearch(query)
+                    }
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.onBackground)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+        }
     }
 }
 

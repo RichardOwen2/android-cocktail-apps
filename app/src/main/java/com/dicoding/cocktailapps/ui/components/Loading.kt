@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +18,7 @@ fun Loading(
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
+            .wrapContentWidth(Alignment.CenterHorizontally),
+        color = MaterialTheme.colorScheme.onTertiaryContainer
     )
 }

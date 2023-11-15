@@ -1,5 +1,6 @@
 package com.dicoding.cocktailapps.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,7 +48,8 @@ fun DrinkItem(
             }
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.background(MaterialTheme.colorScheme.tertiaryContainer)
         ) {
             AsyncImage(
                 model = data.strDrinkThumb,
@@ -67,23 +69,27 @@ fun DrinkItem(
                     text = data.strDrink,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
                     modifier = modifier
                 )
                 Text(
                     text = data.strCategory,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
                     modifier = modifier
                 )
                 Text(
                     text = data.strAlcoholic,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Light,
-                    modifier = modifier,
-                    fontStyle = FontStyle.Italic
+                    fontStyle = FontStyle.Italic,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
+                    modifier = modifier
                 )
             }
         }
+
     }
 }
 

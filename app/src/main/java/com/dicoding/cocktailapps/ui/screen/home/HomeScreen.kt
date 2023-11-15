@@ -1,12 +1,16 @@
 package com.dicoding.cocktailapps.ui.screen.home
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -46,48 +50,59 @@ fun HomeScreen(
 
 
     LaunchedEffect(key1 = viewModel) {
-        viewModel.getCocktails("")
+        if (cocktailsData is UiState.Loading) {
+            viewModel.getCocktails("")
+        }
     }
 
-    Column {
-        SearchBarComponent(
-            modifier = modifier,
-            query = query.value,
-            onQueryChange = { text: String -> query.value = text },
-            onSearch = performSearch,
-        )
-        Spacer(modifier = Modifier.height(10.dp))
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        Column {
+            SearchBarComponent(
+                modifier = modifier,
+                query = query.value,
+                onQueryChange = { text: String -> query.value = text },
+                onSearch = performSearch,
+            )
 
-        when (cocktailsData) {
-            is UiState.Loading -> {
-                Loading()
-            }
+            Spacer(modifier = Modifier.height(6.dp))
 
-            is UiState.Success -> {
-                val drinks = (cocktailsData as UiState.Success<CocktailsResponse>).data.drinks!!
+            when (cocktailsData) {
+                is UiState.Loading -> {
+                    Loading()
+                }
 
-                LazyColumn(
-                    state = listState,
-                    contentPadding = PaddingValues(bottom = 10.dp)
-                ) {
-                    items(drinks, key = { it.idDrink }) {
-                        DrinkItem(
-                            modifier = modifier,
-                            data = it,
-                            onNavigateToDetailScreen = onNavigateToDetailScreen
-                        )
+                is UiState.Success -> {
+                    val drinks = (cocktailsData as UiState.Success<CocktailsResponse>).data.drinks!!
+
+                    LazyColumn(
+                        state = listState,
+                        contentPadding = PaddingValues(bottom = 10.dp)
+                    ) {
+                        items(drinks, key = { it.idDrink }) {
+                            DrinkItem(
+                                modifier = modifier,
+                                data = it,
+                                onNavigateToDetailScreen = onNavigateToDetailScreen
+                            )
+                        }
                     }
                 }
-            }
 
-            is UiState.Error -> {
-                Error(
-                    message = (cocktailsData as UiState.Error).errorMessage,
-                    onRetry = onRetry,
-                )
+                is UiState.Error -> {
+                    Error(
+                        message = (cocktailsData as UiState.Error).errorMessage,
+                        onRetry = onRetry,
+                    )
+                }
             }
         }
     }
+
+
 }
 
 //@Composable
